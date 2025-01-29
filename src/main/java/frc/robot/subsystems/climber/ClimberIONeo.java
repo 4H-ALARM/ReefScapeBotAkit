@@ -6,6 +6,8 @@ package frc.robot.subsystems.climber;
 
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkMaxConfig;
+import edu.wpi.first.math.geometry.Rotation2d;
 import frc.robot.RobotConstants;
 import frc.robot.subsystems.climber.ClimberIO.ClimberIOInputs;
 
@@ -13,9 +15,12 @@ import frc.robot.subsystems.climber.ClimberIO.ClimberIOInputs;
 public class ClimberIONeo implements ClimberIO {
 
   private final SparkMax motor;
+  private final SparkMaxConfig config;
 
-  public ClimberIONeo() {
-    motor = new SparkMax(RobotConstants.Climber.climbermotorID, MotorType.kBrushless);
+  public ClimberIONeo(){
+    motor = new SparkMax(RobotConstants.ClimberConstants.climbermotorID, MotorType.kBrushless);
+    config = new SparkMaxConfig();
+    motor.getEncoder().setPosition(0);
   }
 
   @Override
@@ -29,6 +34,9 @@ public class ClimberIONeo implements ClimberIO {
   }
 
   @Override
-  public void updateInputs(ClimberIOInputs inputs) {}
+  public void updateInputs(ClimberIOInputs inputs) {
+    inputs.climberAngle = Rotation2d.fromRotations(motor.getEncoder().getPosition());
+    inputs.climberspeed = motor.get();
+  }
   ;
 }

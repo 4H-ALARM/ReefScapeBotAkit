@@ -19,11 +19,15 @@ public class Climber extends SubsystemBase {
   }
 
   public void moveUp() {
-    this.climber.moveClimberArm(RobotConstants.Climber.climberSpeed);
+    this.climber.moveClimberArm(RobotConstants.ClimberConstants.climberSpeed);
   }
 
   public void moveDown() {
-    this.climber.moveClimberArm(-RobotConstants.Climber.climberSpeed);
+    this.climber.moveClimberArm(-RobotConstants.ClimberConstants.climberSpeed);
+  }
+
+  public void stop() {
+    this.climber.stopClimberArm();
   }
 
   @Override

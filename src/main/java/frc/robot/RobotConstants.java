@@ -13,7 +13,7 @@ public class RobotConstants {
     public static final Rotation2d holdAngle = Rotation2d.fromDegrees(0);
   }
 
-  public static class Climber {
+  public static class ClimberConstants {
 
     public static final int climbermotorID = 48;
     public static final double climberSpeed = 0.3;
