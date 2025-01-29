@@ -17,7 +17,7 @@ public class ClimberIONeo implements ClimberIO {
   private final SparkMax motor;
   private final SparkMaxConfig config;
 
-  public ClimberIONeo(){
+  public ClimberIONeo() {
     motor = new SparkMax(RobotConstants.ClimberConstants.climbermotorID, MotorType.kBrushless);
     config = new SparkMaxConfig();
     motor.getEncoder().setPosition(0);
